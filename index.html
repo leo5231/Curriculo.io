@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--import font QUANDO-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quando&display=swap" rel="stylesheet">
+
+    <!--import font POPPINS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <nav class="nav">
+                <ul>
+                    <li><a href="como-usar.html">Como usar</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li class="createButton"><a href="templates.html">Criar</a></li>
+                </ul>
+            </nav>
+
+            <div id="mobileContainer" class="mobileContainer">
+                <div class="mobileHeader">
+                    <img onclick="OpenMobile()" id="iconOpen" src="src/img/hamburger.png">
+                </div>
+
+                <div id="MobileNav" class="mobileNav">
+                    <ul>
+                        <li><a href="como-usar.html">Como usar</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li class="createButton"><a href="templates.html" style="color: #191919;">Criar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--HOME-->
+        <section class="homeContainer">
+            <div class="box1">
+                <h1>Seu currículo pronto agora<br> por apenas <span>R$5.</span></h1>
+            </div>
+            <div class="box2">
+                <div class="content1">
+                    <p style="font-size: 1.5rem;">Visualize antes de<br> pagar. Sem cadastro,<br> sem enrolação.</p>
+                    <div><p style="font-size: 1.1rem; padding: 10px 0px 10px 0px;">100% Personalizável</p></div>
+                </div>
+                <div class="content2">
+                    <img src="src/img/Vector.png" alt="">
+                </div>
+                <div class="content3">
+                    <p style="font-size: 1.5rem;">Crie em menos de<br> 10 minutos.</p>
+                    <a href="templates.html" style="text-decoration: none; color: inherit;">
+                        <div class="button">
+                            <p style="font-size: 1.2rem;">Criar agora</p>
+                            <img src="src/img/next.png">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+:root {
+    --preto : #191919;  
+    --verde : #9EE85F;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: "Quando", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+a {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.nav {
+   display: flex;
+   flex-direction: row;
+   list-style: none;
+    background-color: var(--preto);
+    justify-content: center;
+    align-items: center;
+    padding: 9px 9px 9px 25px;
+    border-radius: 40px;
+    margin-top: 15px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 60px;
+    color: #CCCDDF;
+    align-items: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #CCCDDF
+}
+
+.createButton {
+    background-color: var(--verde);
+    padding: 14px 50px 14px 50px;
+    border-radius: 40px;
+    transition: 0.5s;
+}
+
+.createButton a {
+    color: var(--preto);
+    font-size: 1.2rem;
+    
+}
+
+.createButton:hover  {
+    transform: scale(1.1);
+    margin-right: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.mobileHeader {
+    display: none;
+}
+
+.mobileNav {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.mobileNav ul {
+   list-style: none;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.mobileNav a {
+   text-decoration: none;
+   color: #CCCDDF;
+}
+
+ .mobileHeader img {
+    width: 40px;
+}
+
+.mobileNav.openMobile {
+    display: flex;
+    flex-direction: column;
+    z-index: 999999;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.mobileContainer.openContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--preto);
+    padding: 0px 30px 70px 30px;
+    border-radius: 0px 0px 40px 40px;
+}
+
+.mobileContainer.CloseAll {
+    display: none;
+}
+
+
+/*HOME*/
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.homeContainer .box1 h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: var(--preto);
+    padding: 15px;
+}
+
+.homeContainer .box1 h1 span {
+    color: var(--verde);
+}
+
+.homeContainer .box2 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.homeContainer .box2 div img {
+    width: 600px;
+}
+
+.homeContainer .box2 .content1 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.homeContainer .box2 .content1 div {
+    border: solid 1px var(--preto);
+    border-radius: 30px;
+    text-align: center;
+}
+
+.homeContainer .box2 .content3 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.homeContainer .box2 .content3 .button img  {
+    width: 35px;
+}
+
+.homeContainer .box2 .content3 .button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--verde);
+    border: none;
+    border-radius: 40px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+/* MIDIA QUARES */
+
+/* Telas grandes (a partir de 1280px) */
+@media (max-width: 1280px) {
+  
+    .nav {
+        padding: 7px 7px 7px 20px;
+    }
+
+    .createButton {
+        padding: 12px 45px 12px 45px;
+    }
+
+
+}
+
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+     
+    .nav {
+        padding: 5px 5px 5px 15px;
+    }
+
+    .createButton {
+        padding: 10px 40px 10px 40px;
+    }
+}
+
+/* Smartphones médios e grandes (até 768px) */
+@media (max-width: 768px) {
+      
+    .nav {
+        padding: 5px 5px 5px 15px;
+        font-size: 1rem;
+    }
+
+    .createButton {
+        padding: 10px 40px 10px 40px;
+    }
+
+    .createButton a {
+        padding: 10px 40px 10px 40px;
+        font-size: 1rem;
+    }
+    
+}
+
+@media (min-width: 480px) {
+
+    .mobileContainer.openContainer {
+        display: none;
+    }
+
+}
+
+
+
+/* Smartphones pequenos (até 480px) */
+@media (max-width: 480px) {
+      
+    .nav {
+        display: none;
+    }
+
+    .mobileHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+        
+    }
+
+
+    .mobileNav {
+        display: none;
+        flex-direction: column;
+    }
+
+}
+

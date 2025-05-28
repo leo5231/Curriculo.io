@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criação do Currículo</title>
+  <style>
+    :root {
+      --cor-primaria: #1f7bff;
+      --cor-secundaria: #0f63d6;
+      --cor-perigo: #ff4444;
+      --cor-perigo-hover: #cc0000;
+      --cor-texto: #333;
+      --cor-fundo: #f7f7f7;
+      --cor-fundo-preview: #fff;
+      --borda: 1px solid #ccc;
+      --padding-geral: 30px;  /* Aumentado para web */
+      --padding-mobile: 20px;
+      --max-width: 1500px;    /* Adicionado limite máximo */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--cor-texto);
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .inputs, .preview {
+      width: 100%;
+      min-height: 100vh;
+      overflow-y: auto;
+      padding: var(--padding-mobile);
+    }
+
+    .inputs {
+      background-color: var(--cor-fundo);
+    }
+
+    .preview {
+      background-color: var(--cor-fundo-preview);
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: var(--borda);
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    h1 {
+      padding-top: 15px;
+      font-size: 28px;
+    }
+
+    h2 {
+      margin: 30px 0 20px 0;
+      font-size: 22px;
+    }
+
+    .entry {
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #eee;
+      position: relative;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 24px;
+      background-color: var(--cor-primaria);
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: inherit;
+      transition: all 0.3s;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    button:hover {
+      background-color: var(--cor-secundaria);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .remover-btn {
+      background-color: var(--cor-perigo) !important;
+      margin-top: 15px;
+      padding: 10px 18px !important;
+      font-size: 14px;
+    }
+    .remover-btn:hover {
+      background-color: var(--cor-perigo-hover) !important;
+    }
+
+    /* Template 1 - Analista de Dados (Profissional) */
+    .template1 {
+      color: #003366;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .template1 h1 {
+      border-bottom: 2px solid #003366;
+      padding-bottom: 15px;
+      color: #003366;
+      margin-bottom: 30px;
+    }
+    .template1 h2 {
+      background-color: #f0f7ff;
+      padding: 12px 20px;
+      margin: 40px 0 25px 0;
+      color: #003366;
+      border-radius: 6px;
+    }
+    .template1 #preview-resumo,
+    .template1 #preview-habilidades {
+      background-color: #f8fafc;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    /* Template 2 - Estagiário TI (Moderno) */
+    .template2 {
+      font-family: 'Roboto', sans-serif;
+      background: white;
+      color: #333;
+    }
+    .template2 h1 {
+      background: #2c3e50;
+      color: white;
+      padding: 25px;
+      margin: -20px -20px 30px -20px;
+    }
+    .template2 h2 {
+      border-left: 4px solid #3498db;
+      padding-left: 20px;
+      margin: 40px 0 25px 0;
+      color: #2c3e50;
+    }
+    .template2 .contact-info {
+      background: #f5f7fa;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    .template2 #preview-experiencias p,
+    .template2 #preview-formacoes p {
+      border-left: 2px solid #eee;
+      padding-left: 20px;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    /* Template 3 - Executivo Vendas (Elegante) */
+    .template3 {
+      font-family: 'Georgia', serif;
+      color: #3a3a3a;
+      background: #f9f9f9;
+    }
+    .template3 h1 {
+      font-weight: normal;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+      color: #222;
+      margin-bottom: 30px;
+    }
+    .template3 h2 {
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 10px;
+      color: #444;
+      margin: 40px 0 25px 0;
+    }
+    .template3 #preview-resumo {
+      font-style: italic;
+      line-height: 1.8;
+      padding: 0 15px;
+      margin-bottom: 30px;
+    }
+    .template3 #preview-habilidades {
+      column-count: 2;
+      padding: 0 15px;
+      line-height: 1.8;
+    }
+    .template3 .contact-info {
+      margin: 25px 0;
+      line-height: 1.8;
+      padding: 0 15px;
+    }
+
+    /* Responsividade */
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        margin: 20px auto;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .inputs, .preview {
+        width: 50%;
+        height: calc(100vh - 40px);
+        padding: var(--padding-geral);
+      }
+
+      /* Ajustes específicos para desktop */
+      .template3 #preview-habilidades {
+        column-count: 2;
+        column-gap: 30px;
+      }
+      
+      .template2 h1 {
+        margin: -30px -30px 40px -30px;
+        padding: 30px;
+      }
+      
+      .template1 h2 {
+        padding: 15px 25px;
+      }
+
+      input, textarea {
+        padding: 14px 18px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      :root {
+        --padding-geral: 40px;
+      }
+    }
+
+    @media print {
+      body {
+        background: none;
+      }
+      .container {
+        box-shadow: none;
+        max-width: 100%;
+      }
+      .inputs {
+        display: none;
+      }
+      .preview {
+        width: 100%;
+        height: auto;
+        padding: 30px !important;
+        border: none;
+      }
+      button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- O restante do HTML permanece exatamente igual ao anterior -->
+  <div class="container">
+    <div class="inputs">
+      <h2>Dados Pessoais</h2>
+      <input id="nome" placeholder="Nome completo" oninput="updatePreview()">
+      <input id="endereco" placeholder="Endereço" oninput="updatePreview()">
+      <input id="telefone" placeholder="Telefone" oninput="updatePreview()">
+      <input id="idade" placeholder="Idade" oninput="updatePreview()">
+      <input id="email" placeholder="Email" oninput="updatePreview()">
+      <textarea id="resumo" placeholder="Resumo profissional" oninput="updatePreview()"></textarea>
+
+      <h2>Formação Acadêmica</h2>
+      <div id="formacoes"></div>
+      <button onclick="adicionarFormacao()">Adicionar Formação</button>
+
+      <h2>Experiência Profissional</h2>
+      <div id="experiencias"></div>
+      <button onclick="adicionarExperiencia()">Adicionar Experiência</button>
+
+      <h2>Habilidades</h2>
+      <textarea id="habilidades" placeholder="Ex: HTML, CSS, Trabalho em equipe" oninput="updatePreview()"></textarea>
+    </div>
+
+    <div class="preview" id="preview">
+      <h1 id="preview-nome">Seu nome</h1>
+      <div class="contact-info">
+        <p id="preview-endereco">Seu endereço</p>
+        <p id="preview-telefone">Seu telefone</p>
+        <p id="preview-idade">Sua idade</p>
+        <p id="preview-email">Seu email</p>
+      </div>
+      <p id="preview-resumo">Resumo profissional aparecerá aqui.</p>
+
+      <h2>Formação Acadêmica</h2>
+      <div id="preview-formacoes"></div>
+
+      <h2>Experiência Profissional</h2>
+      <div id="preview-experiencias"></div>
+
+      <h2>Habilidades</h2>
+      <p id="preview-habilidades"></p>
+    </div>
+  </div>
+
+  <script>
+    // O JavaScript permanece exatamente igual ao anterior
+    const preview = document.getElementById("preview");
+
+    // Aplicar o template selecionado
+    const templateSelecionado = localStorage.getItem("templateSelecionado") || 'template1';
+    aplicarTemplate(templateSelecionado);
+
+    function updatePreview() {
+      document.getElementById("preview-nome").textContent = document.getElementById("nome").value || "Seu nome";
+      document.getElementById("preview-endereco").textContent = document.getElementById("endereco").value || "Seu endereço";
+      document.getElementById("preview-telefone").textContent = document.getElementById("telefone").value || "Seu telefone";
+      document.getElementById("preview-idade").textContent = document.getElementById("idade").value ? "Idade: " + document.getElementById("idade").value : "";
+      document.getElementById("preview-email").textContent = document.getElementById("email").value || "";
+      document.getElementById("preview-resumo").textContent = document.getElementById("resumo").value || "Resumo profissional aparecerá aqui.";
+      
+      // Formatando habilidades como lista
+      const habilidades = document.getElementById("habilidades").value;
+      if (habilidades) {
+        const habilidadesList = habilidades.split(',').map(item => `• ${item.trim()}`).join('<br>');
+        document.getElementById("preview-habilidades").innerHTML = habilidadesList;
+      } else {
+        document.getElementById("preview-habilidades").innerHTML = "";
+      }
+    }
+
+    function adicionarFormacao() {
+      const container = document.getElementById("formacoes");
+      const id = Date.now();
+      const novoFormacaoHTML = `
+        <div class="entry" id="formacao-${id}">
+          <input placeholder="Instituição" oninput="atualizarFormacoes()">
+          <input placeholder="Nível (Ex: Superior)" oninput="atualizarFormacoes()">
+          <input placeholder="Início" oninput="atualizarFormacoes()">
+          <input placeholder="Conclusão" oninput="atualizarFormacoes()">
+          <button class="remover-btn" onclick="this.parentElement.remove(); atualizarFormacoes()">Remover</button>
+        </div>
+      `;
+      
+      container.insertAdjacentHTML('beforeend', novoFormacaoHTML);
+    }
+
+    function atualizarFormacoes() {
+      const entradas = document.querySelectorAll("#formacoes .entry");
+      const previewContainer = document.getElementById("preview-formacoes");
+      previewContainer.innerHTML = "";
+      entradas.forEach(entry => {
+        const inputs = entry.querySelectorAll("input");
+        const [inst, nivel, inicio, fim] = Array.from(inputs).map(i => i.value);
+        if (inst || nivel || inicio || fim) {
+          previewContainer.innerHTML += `<p><strong>${nivel}</strong> em ${inst} (${inicio} - ${fim})</p>`;
+        }
+      });
+    }
+
+    function adicionarExperiencia() {
+      const container = document.getElementById("experiencias");
+      const id = Date.now();
+      const novaExperienciaHTML = `
+        <div class="entry" id="experiencia-${id}">
+          <input placeholder="Empresa" oninput="atualizarExperiencias()">
+          <input placeholder="Função" oninput="atualizarExperiencias()">
+          <input placeholder="Início" oninput="atualizarExperiencias()">
+          <input placeholder="Conclusão" oninput="atualizarExperiencias()">
+          <textarea placeholder="Resumo das atividades" oninput="atualizarExperiencias()"></textarea>
+          <button class="remover-btn" onclick="this.parentElement.remove(); atualizarExperiencias()">Remover</button>
+        </div>
+      `;
+      
+      container.insertAdjacentHTML('beforeend', novaExperienciaHTML);
+    }
+
+    function atualizarExperiencias() {
+      const entradas = document.querySelectorAll("#experiencias .entry");
+      const previewContainer = document.getElementById("preview-experiencias");
+      previewContainer.innerHTML = "";
+      entradas.forEach(entry => {
+        const inputs = entry.querySelectorAll("input, textarea");
+        const [empresa, funcao, inicio, fim, resumo] = Array.from(inputs).map(i => i.value);
+        if (empresa || funcao || inicio || fim || resumo) {
+          let experienciaHTML = `<p><strong>${funcao || 'Função não especificada'}</strong>`;
+          if (empresa) experienciaHTML += ` em ${empresa}`;
+          if (inicio || fim) experienciaHTML += ` (${inicio} - ${fim})`;
+          if (resumo) experienciaHTML += `<br>${resumo}`;
+          experienciaHTML += `</p>`;
+          previewContainer.innerHTML += experienciaHTML;
+        }
+      });
+    }
+
+    function aplicarTemplate(templateName) {
+      // Remove todas as classes de template
+      preview.classList.remove('template1', 'template2', 'template3');
+      // Adiciona a classe do template selecionado
+      preview.classList.add(templateName);
+      // Salva no localStorage
+      localStorage.setItem("templateSelecionado", templateName);
+    }
+
+    // Inicializa o preview e adiciona uma primeira entrada vazia
+    updatePreview();
+    adicionarFormacao();
+    adicionarExperiencia();
+  </script>
+</body>
+</html>
