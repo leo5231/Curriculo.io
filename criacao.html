@@ -303,6 +303,10 @@
 
       <h2>Habilidades</h2>
       <textarea id="habilidades" placeholder="Ex: HTML, CSS, Trabalho em equipe" oninput="updatePreview()"></textarea>
+
+      <button onclick="gerarPDF()" style="background-color: #28a745; margin-top: 30px;">
+        Gerar PDF do Currículo
+      </button>
     </div>
 
     <div class="preview" id="preview">
@@ -326,6 +330,10 @@
     </div>
   </div>
 
+  
+
+  <!-- Adicione isto no <head> do seu HTML -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="criacao.js">
     
   </script>

@@ -100,3 +100,54 @@
     updatePreview();
     adicionarFormacao();
     adicionarExperiencia();
+
+
+
+
+
+
+    function gerarPDF() {
+      // Captura o conteúdo do preview
+      const preview = document.getElementById("preview");
+    
+      // Cria um clone do preview para evitar bugs de estilo
+      const clone = preview.cloneNode(true);
+      clone.style.width = "100%";
+      clone.style.padding = "40px";
+      clone.style.background = "white";
+      clone.style.color = "black";
+      clone.style.fontFamily = "Arial, sans-serif"; // fonte segura
+    
+      // Adiciona o clone em um container temporário invisível
+      const container = document.createElement("div");
+      container.style.position = "absolute";
+      container.style.top = "-9999px";
+      container.appendChild(clone);
+      document.body.appendChild(container);
+    
+      // Gera o PDF a partir do clone
+      html2pdf()
+        .set({
+          margin: 0,
+          filename: "curriculo.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+        })
+        .from(clone)
+        .save()
+        .then(() => {
+          document.body.removeChild(container); // remove o container depois
+        });
+    }
+    
+    
+    
+    function getNomeArquivoPDF() {
+      const nome = document.getElementById('nome').value.trim();
+      if (nome) {
+        // Remove caracteres especiais e substitui espaços por underscores
+        return 'Curriculo_' + nome.replace(/[^\w\s]/gi, '').replace(/\s+/g, '_') + '.pdf';
+      }
+      return 'meu_curriculo.pdf';
+    }
